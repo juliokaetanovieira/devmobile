@@ -80,6 +80,7 @@
                     android:tint="@color/white" />
 
                 <EditText
+                    android:id="@+id/camp_usuario"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_alignBottom="@+id/imageView_userIcon"
@@ -111,6 +112,7 @@
                     android:tint="@color/white" />
 
                 <EditText
+                    android:id="@+id/camp_senha"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_alignBottom="@+id/imageView_passwordIcon"
@@ -134,6 +136,7 @@
                 android:layout_marginTop="10dp">
 
                 <CheckBox
+                    android:id="@+id/chkLembrar"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_centerVertical="true"
@@ -143,7 +146,7 @@
             </RelativeLayout>
 
             <Button
-                android:id="@+id/btn_Logar"
+                android:id="@+id/buttonLogar"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/relativeLayout3"
@@ -159,7 +162,7 @@
                 android:id="@+id/imageView2"
                 android:layout_width="match_parent"
                 android:layout_height="2dp"
-                android:layout_below="@+id/btn_Logar"
+                android:layout_below="@+id/buttonLogar"
                 android:layout_marginLeft="30dp"
                 android:layout_marginRight="30dp"
                 android:layout_marginTop="10dp"
