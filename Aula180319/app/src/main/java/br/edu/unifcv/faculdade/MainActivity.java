@@ -12,9 +12,7 @@ import br.edu.unifcv.faculdade.constants.ConversorMoedasConstants;
 import br.edu.unifcv.faculdade.utils.SecurityPreferences;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
-
     private ViewHolder mViewHolder = new ViewHolder();
-
     private SecurityPreferences mSecurityPreferences;
 
     @Override
