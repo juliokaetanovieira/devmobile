@@ -15,24 +15,24 @@ import br.edu.unifcv.faculdade.utils.SecurityPreferences;
 import br.edu.unifcv.faculdade.utils.ToastUtils;
 
 public class loginActivity extends AppCompatActivity implements View.OnClickListener {
-    private ViewHolder viewHolder = new ViewHolder();
-    private SecurityPreferences mSecurityPreferences;
     private ViewHolder mViewHolder = new ViewHolder();
+    private SecurityPreferences mSecurityPreferences;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
+        mSecurityPreferences = new SecurityPreferences(this);
         loadcomponent();
-        viewHolder.buttonLogar.setOnClickListener(this);
+        mViewHolder.buttonLogar.setOnClickListener(this);
 
     }
 
     private void loadcomponent() {
-        this.viewHolder.editUsuario = this.findViewById(R.id.camp_usuario);
-        this.viewHolder.editSenha = this.findViewById(R.id.camp_senha);
-        this.viewHolder.chkLembrar = this.findViewById(R.id.chkLembrar);
-        this.viewHolder.buttonLogar = this.findViewById(R.id.buttonLogar);
+        this.mViewHolder.editUsuario = this.findViewById(R.id.camp_usuario);
+        this.mViewHolder.editSenha = this.findViewById(R.id.camp_senha);
+        this.mViewHolder.chkLembrar = this.findViewById(R.id.chkLembrar);
+        this.mViewHolder.buttonLogar = this.findViewById(R.id.buttonLogar);
     }
 
 
@@ -40,9 +40,8 @@ public class loginActivity extends AppCompatActivity implements View.OnClickList
     public void onClick(View v) {
         switch (v.getId()) {
             case R.id.buttonLogar: {
-                saveSecurityPreferences();
-                logar();
-
+                this.saveSecurityPreferences();
+                this.logar();
                 break;
             }
         }
@@ -50,8 +49,8 @@ public class loginActivity extends AppCompatActivity implements View.OnClickList
 
     private void logar() {
         Usuario mUsuario = new Usuario();
-        mUsuario.setNome(this.viewHolder.editUsuario.getText().toString());
-        mUsuario.setSenha(this.viewHolder.editSenha.getText().toString());
+        mUsuario.setNome(this.mViewHolder.editUsuario.getText().toString());
+        mUsuario.setSenha(this.mViewHolder.editSenha.getText().toString());
         UsuarioService mUsuarioService = new UsuarioService(mUsuario);
 
         if (!mUsuarioService.isDadosOk()) {
@@ -70,8 +69,9 @@ public class loginActivity extends AppCompatActivity implements View.OnClickList
 
 
     private void saveSecurityPreferences() {
-        this.mSecurityPreferences.storeString(ConversorMoedasConstants.USUARIO, viewHolder.editUsuario.getText().toString());
-        this.mSecurityPreferences.storeString(ConversorMoedasConstants.SENHA, viewHolder.editSenha.getText().toString());
+        this.mSecurityPreferences.storeString(ConversorMoedasConstants.USUARIO, mViewHolder.editUsuario.getText().toString());
+        this.mSecurityPreferences.storeString(ConversorMoedasConstants.SENHA, mViewHolder.editSenha.getText().toString());
+        this.mSecurityPreferences.storeString(ConversorMoedasConstants.LEMBRARSENHA, mViewHolder.chkLembrar.isChecked() ? "S" : "N");
 
     }
 
@@ -82,8 +82,13 @@ public class loginActivity extends AppCompatActivity implements View.OnClickList
     }
 
     private void loadSecurityPreferences() {
-        this.mViewHolder.editUsuario.setText(this.mSecurityPreferences.getStoredString(ConversorMoedasConstants.USUARIO));
-        this.mViewHolder.editSenha.setText(this.mSecurityPreferences.getStoredString(ConversorMoedasConstants.SENHA));
+        this.mViewHolder.chkLembrar.setChecked(this.mSecurityPreferences.getStoredString(ConversorMoedasConstants.LEMBRARSENHA).equalsIgnoreCase("S"));
+
+        if(mViewHolder.chkLembrar.isChecked()){
+            this.mViewHolder.editUsuario.setText(this.mSecurityPreferences.getStoredString(ConversorMoedasConstants.USUARIO));
+            this.mViewHolder.editSenha.setText(this.mSecurityPreferences.getStoredString(ConversorMoedasConstants.SENHA));
+        }
+
 
     }
 
