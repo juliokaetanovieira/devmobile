@@ -7,6 +7,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.EditText;
+import android.widget.TextView;
 
 import br.edu.unifcv.faculdade.constants.ConversorMoedasConstants;
 import br.edu.unifcv.faculdade.model.Usuario;
@@ -33,6 +34,7 @@ public class loginActivity extends AppCompatActivity implements View.OnClickList
         this.mViewHolder.editSenha = this.findViewById(R.id.camp_senha);
         this.mViewHolder.chkLembrar = this.findViewById(R.id.chkLembrar);
         this.mViewHolder.buttonLogar = this.findViewById(R.id.buttonLogar);
+
     }
 
 
@@ -48,7 +50,9 @@ public class loginActivity extends AppCompatActivity implements View.OnClickList
     }
 
     private void logar() {
+
         Usuario mUsuario = new Usuario();
+
         mUsuario.setNome(this.mViewHolder.editUsuario.getText().toString());
         mUsuario.setSenha(this.mViewHolder.editSenha.getText().toString());
         UsuarioService mUsuarioService = new UsuarioService(mUsuario);
@@ -58,12 +62,23 @@ public class loginActivity extends AppCompatActivity implements View.OnClickList
         }else {
             if (mUsuarioService.isLoginOk()) {
                 Intent intent = new Intent(this, MainActivity.class);
+
+                intent.putExtras(this.passUserName(mUsuario.getNome()));
                 startActivity(intent);
+                finish();
                 //Chamar a tela de moedas
             } else {
                 ToastUtils.ShowToast(this, "Usuário e/ou Login inválido");
             }
         }
+
+    }
+
+    private Bundle passUserName(String nome){
+        Bundle bundle = new Bundle();
+        bundle.putString(ConversorMoedasConstants.USUARIO, nome);
+        bundle.putString(ConversorMoedasConstants.SENHA, "123");
+        return bundle;
 
     }
 
@@ -98,5 +113,6 @@ public class loginActivity extends AppCompatActivity implements View.OnClickList
         public EditText editSenha;
         public CheckBox chkLembrar;
         public Button buttonLogar;
+
     }
 }

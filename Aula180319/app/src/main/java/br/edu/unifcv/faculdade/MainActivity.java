@@ -1,5 +1,6 @@
 package br.edu.unifcv.faculdade;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -33,6 +34,16 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         // instanciando nossa Classe que encapsula o Shared Preferences
         this.mSecurityPreferences = new SecurityPreferences(this);
 
+        //Lendo as informações
+        this.loadParams();
+
+    }
+
+    private void loadParams(){
+        Intent intent = getIntent();
+        Bundle bundle = intent.getExtras();
+
+        this.mViewHolder.txt_usuario.setText(bundle.getString(ConversorMoedasConstants.USUARIO));
     }
 
     private void setEventsOnButtons() {
@@ -50,6 +61,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
         this.mViewHolder.buttonCalculate = (Button) this.findViewById(R.id.btn_calcular);
         this.mViewHolder.buttonLimpar = (Button) this.findViewById(R.id.btn_limpar);
+        this.mViewHolder.txt_usuario = this.findViewById(R.id.txt_usuario);
 
     }
 
@@ -154,6 +166,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         private TextView textEuro;
         private Button buttonCalculate;
         private Button buttonLimpar;
+        public TextView txt_usuario;
     }
 
 }
