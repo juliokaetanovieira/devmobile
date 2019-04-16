@@ -7,10 +7,22 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import java.util.List;
+
 import br.edu.unifcv.faculdade.R;
+import br.edu.unifcv.faculdade.listener.OnListClickInteractionListener;
+import br.edu.unifcv.faculdade.model.Carro;
 import br.edu.unifcv.faculdade.viewholder.CarViewHolder;
 
 public class CarListAdapter extends RecyclerView.Adapter<CarViewHolder> {
+
+    private List<Carro> mListCarro;
+    private OnListClickInteractionListener mListener;
+
+    public CarListAdapter(List<Carro> carros, OnListClickInteractionListener listener) {
+        this.mListCarro = carros;
+        this.mListener = listener;
+    }
 
     @Override
     public CarViewHolder onCreateViewHolder(ViewGroup viewGroup, int i) {
@@ -24,10 +36,14 @@ public class CarListAdapter extends RecyclerView.Adapter<CarViewHolder> {
     public void onBindViewHolder(CarViewHolder carViewHolder, int i) {
         //Responsavel por fazer a troca dos Recyclerview
 
+        carViewHolder.bindData(this.mListCarro.get(i));
+
+
     }
 
+    //Este cara serve para dizer quantos itens tem na lista
     @Override
     public int getItemCount() {
-        return 0;
+        return this.mListCarro.size();
     }
 }

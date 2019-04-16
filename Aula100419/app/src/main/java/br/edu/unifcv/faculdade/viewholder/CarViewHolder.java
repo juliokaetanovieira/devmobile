@@ -6,6 +6,8 @@ import android.view.View;
 import android.widget.TextView;
 
 import br.edu.unifcv.faculdade.R;
+import br.edu.unifcv.faculdade.listener.OnListClickInteractionListener;
+import br.edu.unifcv.faculdade.model.Carro;
 
 public class CarViewHolder extends RecyclerView.ViewHolder {
 
@@ -14,5 +16,15 @@ public class CarViewHolder extends RecyclerView.ViewHolder {
     public CarViewHolder(View itemView) {
         super(itemView);
         this.mTextModel = itemView.findViewById(R.id.text_modelo);
+    }
+
+    public void bindData(final Carro carro, final OnListClickInteractionListener listener) {
+        this.mTextModel.setText(carro.getModelo());
+        this.mTextModel.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                listener.onClick(carro.getId());
+            }
+        });
     }
 }

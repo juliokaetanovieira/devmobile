@@ -16,4 +16,8 @@
     <string name="realize_suas_convers_es_de_moeda">Realize suas conversões de moeda</string>
     <string name="carros_dash">Carros</string>
     <string name="listagem_de_carros">Listagem de Carros</string>
+
+    <string name="modelo">Modelo</string>
+    <string name="potencia">Cavalos</string>
+    <string name="preco">Preço</string>
 </resources>
