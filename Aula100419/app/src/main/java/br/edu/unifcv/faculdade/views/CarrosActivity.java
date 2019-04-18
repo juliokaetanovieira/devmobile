@@ -23,7 +23,7 @@ public class CarrosActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_carros);
 
-        CarroMock carroMock = new CarroMock();
+        CarroMock carroMock = new CarroMock(this);
 
         OnListClickInteractionListener listener = new OnListClickInteractionListener() {
             @Override

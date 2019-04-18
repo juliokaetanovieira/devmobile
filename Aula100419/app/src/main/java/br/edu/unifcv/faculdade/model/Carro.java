@@ -1,17 +1,27 @@
 package br.edu.unifcv.faculdade.model;
 
+import android.graphics.drawable.Drawable;
+
+/**
+ * Entidade de carros
+ */
 public class Carro {
 
     private int id;
     private String modelo;
-    private int potencia;
+    private String fabricante;
+    private int potecia;
     private Double preco;
+    public Drawable picture;
 
-    public Carro(int id, String modelo, int potencia, Double preco) {
+    public Carro(int id, String modelo, String fabricante, int potecia, Double preco, Drawable picture) {
         this.id = id;
         this.modelo = modelo;
-        this.potencia = potencia;
+        this.fabricante = fabricante;
+        this.potecia = potecia;
         this.preco = preco;
+        this.picture = picture;
+
     }
 
     public int getId() {
@@ -30,12 +40,12 @@ public class Carro {
         this.modelo = modelo;
     }
 
-    public int getPotencia() {
-        return potencia;
+    public int getPotecia() {
+        return potecia;
     }
 
-    public void setPotencia(int potencia) {
-        this.potencia = potencia;
+    public void setPotecia(int potecia) {
+        this.potecia = potecia;
     }
 
     public Double getPreco() {
@@ -44,5 +54,21 @@ public class Carro {
 
     public void setPreco(Double preco) {
         this.preco = preco;
+    }
+
+    public Drawable getPicture() {
+        return picture;
+    }
+
+    public void setPicture(Drawable picture) {
+        this.picture = picture;
+    }
+
+    public String getFabricante() {
+        return fabricante;
+    }
+
+    public void setFabricante(String fabricante) {
+        this.fabricante = fabricante;
     }
 }

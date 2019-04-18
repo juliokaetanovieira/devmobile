@@ -20,4 +20,8 @@
     <string name="modelo">Modelo</string>
     <string name="potencia">Cavalos</string>
     <string name="preco">Preço</string>
+    <string name="ver_detalhes">Detalhes</string>
+    <string name="fabricante">Fabricante</string>
+    <string name="cavalos">Cavalos</string>
+    <string name="valor">Valor</string>
 </resources>

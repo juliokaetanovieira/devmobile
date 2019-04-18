@@ -36,7 +36,7 @@ public class CarListAdapter extends RecyclerView.Adapter<CarViewHolder> {
     public void onBindViewHolder(CarViewHolder carViewHolder, int i) {
         //Responsavel por fazer a troca dos Recyclerview
 
-        carViewHolder.bindData(this.mListCarro.get(i));
+        carViewHolder.bindData(this.mListCarro.get(i), mListener);
 
 
     }
